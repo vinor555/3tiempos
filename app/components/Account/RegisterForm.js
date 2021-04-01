@@ -53,7 +53,7 @@ export default function RegisterForm(props) {
             <Input
                 placeholder="Correo Electronico"
                 containerStyle={styles.inputForm}
-                onChange={e => onChange(e, "email")}
+                onChange={(e) => onChange(e, "email")}
                 rightIcon={
                     <Icon
                         type="material-community"
@@ -65,7 +65,7 @@ export default function RegisterForm(props) {
             <Input 
                 placeholder="Contraseña"
                 containerStyle={styles.inputForm}
-                onChange={e => onChange(e, "password")}
+                onChange={(e) => onChange(e, "password")}
                 password={true}
                 secureTextEntry={showPassword ? false : true}
                 rightIcon={
@@ -80,7 +80,7 @@ export default function RegisterForm(props) {
             <Input
                 placeholder="Repetir Contraseña"
                 containerStyle={styles.inputForm}
-                onChange={e => onChange(e, "repeatPassword")}
+                onChange={(e) => onChange(e, "repeatPassword")}
                 password={true}
                 secureTextEntry={showRepeatPassword ? false : true}
                 rightIcon={

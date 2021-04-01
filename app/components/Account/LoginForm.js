@@ -4,12 +4,22 @@ import { Input, Icon, Button } from "react-native-elements";
 
 export default function LoginForm() {
     const [showPassword, setShowPassword] = useState(false);
+    const [formData, setFormData] = useState(defaultFormValue);
+
+    const onSubmit = () => {
+        console.log(formData);
+    };
+
+    const onChange = (e, type) => {
+        setFormData({ ...formData, [type]: e.nativeEvent.text }) //no sustituye cada elemento del objeto
+    };
 
     return (
         <View style={styles.formContainer}>
             <Input 
                 placeholder="Correo electronico"
                 containerStyle={styles.inputForm}
+                onChange={(e) => onChange(e, "email")}
                 rightIcon={
                     <Icon
                         type="material-community"
@@ -21,6 +31,7 @@ export default function LoginForm() {
             <Input 
                 placeholder="Contraseña"
                 containerStyle={styles.inputForm}
+                onChange={(e) => onChange(e, "password")}
                 password={true}
                 secureTextEntry={showPassword ? false : true}
                 rightIcon={
@@ -36,9 +47,17 @@ export default function LoginForm() {
                 title="Iniciar sesión"
                 containerStyle={styles.btnContainerLogin}
                 buttonStyle={styles.btnLogin}
+                onPress={onSubmit}
             />
         </View>
     );
+}
+
+function defaultFormValue(){
+    return {
+        email: "",
+        password: ""
+    }
 }
 
 const styles = StyleSheet.create({
