@@ -1,20 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
 
 export default function LoginForm() {
+    const [showPassword, setShowPassword] = useState(false);
 
     return (
         <View style={styles.formContainer}>
             <Input 
                 placeholder="Correo electronico"
                 containerStyle={styles.inputForm}
+                rightIcon={
+                    <Icon
+                        type="material-community"
+                        name="at"
+                        iconStyle={styles.iconRight}
+                    />
+                }
             />
             <Input 
                 placeholder="Contraseña"
                 containerStyle={styles.inputForm}
                 password={true}
-                secureTextEntry={true}
+                secureTextEntry={showPassword ? false : true}
+                rightIcon={
+                    <Icon
+                        type="material-community"
+                        name={showPassword ? "eye-off-outline" : "eye-outline"}
+                        iconStyle={styles.iconRight}
+                        onPress={() => setShowPassword(!showPassword)}
+                    />
+                }
             />
             <Button 
                 title="Iniciar sesión"
@@ -42,5 +58,8 @@ const styles = StyleSheet.create({
     },
     btnLogin: {
         backgroundColor: "#00a680"
+    },
+    iconRight: {
+        color: "#c1c1c1"
     }
 });
